@@ -1,0 +1,87 @@
+<div mat-dialog-title>
+    <h1>Employee CNIC Form</h1>
+</div>
+<form [formGroup]="cnicForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label >Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label >Father Name</mat-label>
+                <input matInput placeholder="Father Name" formControlName="fatherName">
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label >CNIC</mat-label>
+                <input matInput placeholder="Enter your CNIC" formControlName="cnic">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label >Select Country</mat-label>
+                <mat-select formControlName="country">
+                    <mat-option *ngFor="let val of country" [value]="val">
+                        {{val}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label >Current Address</mat-label>
+                <input matInput placeholder="Enter Current Address" formControlName="currentAddress">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label >Permanent Address</mat-label>
+                <input matInput placeholder="Enter Permanent Address" formControlName="parmanentAddress">
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-label><b>Gender</b></mat-label>
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="dobPicker" formControlName="dob">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                <mat-datepicker #dobPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    
+        <div class="row" appearance="outline">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Issue Date</mat-label>
+                <input matInput [matDatepicker]="issuePicker" formControlName="dateOfIssue">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="issuePicker"></mat-datepicker-toggle>
+                <mat-datepicker #issuePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Expire Date</mat-label>
+                <input matInput [matDatepicker]="expirePicker" formControlName="dateOfExpire">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="expirePicker"></mat-datepicker-toggle>
+                <mat-datepicker #expirePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    
+    </div>
+    
+    <div mat-dialog-actions class="action">
+            <button mat-raised-button type="button" [mat-dialog-close]="false">Cencel</button>
+            <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>
